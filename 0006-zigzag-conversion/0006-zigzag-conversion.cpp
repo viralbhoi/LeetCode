@@ -1,40 +1,27 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        vector<vector<char>> mat(1001, vector<char>(1001, '*'));
-
-        bool up = false;
+        vector<string> mat(numRows);
 
         int idx = 0;
-        int j = 0;
-
+        int i = 0;
+        int c = 1;
         while (idx < s.size()) {
-            if (up == false) {
-                for (int i = 0; i < numRows; i++) {
-                    if(idx == s.size()){
-                        break;
-                    }
-                    mat[i][j] = s[idx++];
-                }
-                j++;
-            } else {
-                for (int i = numRows - 2; i > 0; i--) {
-                    if(idx == s.size()){
-                        break;
-                    }
-                    mat[i][j++] = s[idx++];
-                }
+            mat[i] += s[idx++];
+
+            if (i == 0) {
+                c = 1;
             }
-            up = !up;
+            if (i == numRows - 1) {
+                c = -1;
+            }
+            i += c;
         }
+
         string ans = "";
 
-        for (int i = 0; i < numRows; i++) {
-            for (auto it : mat[i]) {
-                if (it != '*') {
-                    ans += it;
-                }
-            }
+        for (auto it : mat) {
+            ans += it;
         }
 
         return ans;
