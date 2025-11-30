@@ -8,10 +8,10 @@ public:
         }
         int n = nums.size();
         int need_to_remove = sum % p;
-        int min_len = INT_MAX;
+        int min_len = n;
         map<int,int> mp;
         long long prefix = 0;
-
+        mp[0] = -1;
         for (int i = 0; i < n; i++) {
             prefix += nums[i];
 
@@ -24,6 +24,6 @@ public:
             mp[prefix % p] = i;
         }
 
-        return min_len == INT_MAX ? -1 : min_len;
+        return min_len == n ? -1 : min_len;
     }
 };
