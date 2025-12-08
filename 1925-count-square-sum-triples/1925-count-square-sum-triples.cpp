@@ -8,14 +8,10 @@ public:
                 if (a == b) {
                     continue;
                 }
-                for (int c = 1; c <= n; c++) {
-                    if (a == c || b == c) {
-                        continue;
-                    }
+                int c = sqrt(a * a + b * b);
 
-                    if (a * a + b * b == c * c) {
-                        ans++;
-                    }
+                if (c <= n && c * c == a * a + b * b) {
+                    ans++;
                 }
             }
         }
