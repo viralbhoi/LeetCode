@@ -13,7 +13,7 @@ public:
             freq[num] --;
             int temp = num * 2;
 
-            ans = (ans + prev[temp] * freq[temp]) % MOD;
+            ans = (ans + 1ll * prev[temp] * freq[temp]) % MOD;
             prev[num]++;
         }
 
